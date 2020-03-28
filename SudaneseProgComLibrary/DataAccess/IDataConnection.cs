@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace SudaneseProgComLibrary.DataAccess
 {
     public interface IDataConnection
     {
-
         /// <summary>
         /// Creates new row of in the table you selected.
         /// </summary>
@@ -27,5 +24,14 @@ namespace SudaneseProgComLibrary.DataAccess
         /// <returns><see cref="List{T}"/></returns>
         List<T> Get<T>(string commandText, CommandType commandType = CommandType.StoredProcedure);
 
+        /// <summary>
+        /// Get the data model by its own id.
+        /// </summary>
+        /// <typeparam name="T">The data model.</typeparam>
+        /// <param name="Id">The id of data model.</param>
+        /// <param name="commandText">The command or stored procedure to excute.</param>
+        /// <param name="commandType">command type</param>
+        /// <returns></returns>
+        T GetById<T>(string commandText, int Id, CommandType commandType = CommandType.StoredProcedure) where T : new();
     }
 }

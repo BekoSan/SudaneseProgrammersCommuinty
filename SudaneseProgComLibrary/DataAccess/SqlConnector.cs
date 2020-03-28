@@ -35,5 +35,20 @@ namespace SudaneseProgComLibrary.DataAccess
                 return output;
             }
         }
+
+        public T GetById<T>(string commandText, int Id, CommandType commandType = CommandType.StoredProcedure) where T : new()
+        {
+            T output = new T();
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.GetConnectionString(db)))
+            {
+                DynamicParameters p = new DynamicParameters();
+                p.Add("Id", Id);
+
+                output = connection.QueryFirstOrDefault<T>(commandText, p, commandType: commandType);
+
+                return output;
+            }
+        }
     }
 }

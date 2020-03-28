@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SudaneseProgComLibrary;
 using System.Web.Http;
 
 namespace API
@@ -13,7 +11,7 @@ namespace API
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            GlobalConfig.InitializeConnection(DataBaseType.Sql);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
