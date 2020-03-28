@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Members]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [FullName] NVARCHAR(250) NOT NULL, 
+    [Job] NVARCHAR(250) NOT NULL
+)
