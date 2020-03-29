@@ -23,8 +23,10 @@ namespace API.Controllers
         }
 
         // POST: api/Members
-        public void Post([FromBody]string value)
+
+        public void Post(Member member)
         {
+            GlobalConfig.Connection.Create(member, "spMembers_Insert", CommandType.StoredProcedure);
         }
 
         // PUT: api/Members/5
