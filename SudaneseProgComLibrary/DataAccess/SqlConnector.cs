@@ -24,6 +24,16 @@ namespace SudaneseProgComLibrary.DataAccess
             }
         }
 
+        public T Update<T>(T model, string commandText, CommandType commandType = CommandType.StoredProcedure)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.GetConnectionString(db)))
+            {
+                connection.Execute(commandText, DapperHelper.GenerateParameters(model, true), commandType: commandType);
+
+                return model;
+            }
+        }
+
         public List<T> Get<T>(string commandText, CommandType commandType = CommandType.StoredProcedure)
         {
             List<T> output = new List<T>();
