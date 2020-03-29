@@ -7,11 +7,11 @@ namespace SudaneseProgComLibrary.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "الإسم الكامل")]
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
         [Required]
-        [Display(Name = "الوظيفة")]
+        [Display(Name = "Job")]
         public string Job { get; set; }
     }
 }
