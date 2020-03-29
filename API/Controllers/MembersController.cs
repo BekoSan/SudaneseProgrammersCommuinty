@@ -16,6 +16,7 @@ namespace API.Controllers
 
         // GET api/members/{id}
         [Route("members/{id}")]
+        [HttpGet]
         public Member LoadMemberProfile(int Id)
         {
             return GlobalConfig.Connection.GetById<Member>("spMembers_GetById", Id, CommandType.StoredProcedure);
