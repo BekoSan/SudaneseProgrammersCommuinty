@@ -16,7 +16,7 @@ namespace SudaneseProgComLibrary.DataAccess
         T Create<T>(T model, string commandText, CommandType commandType = CommandType.StoredProcedure);
 
         /// <summary>
-        /// Creates new row of in the table you selected.
+        /// Updates existing row of in the table you selected.
         /// </summary>
         /// <typeparam name="T">The type of data model ,you want to save</typeparam>
         /// <param name="model">The data model object.</param>
@@ -24,6 +24,16 @@ namespace SudaneseProgComLibrary.DataAccess
         /// <param name="commandType">The way you want to perform action , by stored  procedure or sql command text.</param>
         /// <returns></returns>
         T Update<T>(T model, string commandText, CommandType commandType = CommandType.StoredProcedure);
+
+        /// <summary>
+        /// Deletes  row of in the table you selected.
+        /// </summary>
+        /// <typeparam name="T">The type of data model ,you want to save</typeparam>
+        /// <param name="model">The data model object.</param>
+        /// <param name="commandText">The text of the sql command or stored procdure , you want to perform.</param>
+        /// <param name="commandType">The way you want to perform action , by stored  procedure or sql command text.</param>
+        /// <returns></returns>
+        void Delete<T>(T model, string commandText, CommandType commandType = CommandType.StoredProcedure);
 
         /// <summary>
         /// Gets all the rows in table and put them in list of data model.

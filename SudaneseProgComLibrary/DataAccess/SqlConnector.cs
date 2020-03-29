@@ -60,5 +60,15 @@ namespace SudaneseProgComLibrary.DataAccess
                 return output;
             }
         }
+
+        public void Delete<T>(T model, string commandText, CommandType commandType = CommandType.StoredProcedure)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.GetConnectionString(db)))
+            {
+                connection.Execute(commandText, DapperHelper.GenerateParameters(model, true), commandType: commandType);
+
+                //return model;
+            }
+        }
     }
 }

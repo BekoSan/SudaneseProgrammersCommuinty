@@ -35,8 +35,9 @@ namespace API.Controllers
         }
 
         // DELETE: api/Members/5
-        public void Delete(int id)
+        public void Delete(int id, Member member)
         {
+            GlobalConfig.Connection.Delete(member, "spMembers_Delete", CommandType.StoredProcedure);
         }
     }
 }
