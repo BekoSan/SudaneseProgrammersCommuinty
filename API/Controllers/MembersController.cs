@@ -15,7 +15,6 @@ namespace API.Controllers
         }
 
         // GET api/members/{id}
-        [Route("members/{id}")]
         [HttpGet]
         public Member LoadMemberProfile(int Id)
         {
@@ -30,7 +29,7 @@ namespace API.Controllers
         }
 
         // PUT: api/Members/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, Member member)
         {
         }
 
