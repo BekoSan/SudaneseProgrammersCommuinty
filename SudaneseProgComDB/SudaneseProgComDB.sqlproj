@@ -68,6 +68,7 @@
     <Build Include="dbo\StoredProcedures\spMembers_GetAll.sql" />
     <Build Include="dbo\StoredProcedures\spMembers_GetById.sql" />
     <Build Include="dbo\StoredProcedures\spMembers_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spMembers_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\SudaneseProgComDB.publish.xml" />
