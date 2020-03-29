@@ -31,6 +31,7 @@ namespace API.Controllers
         // PUT: api/Members/5
         public void Put(int id, Member member)
         {
+            GlobalConfig.Connection.Update(member, "spMembers_Update", CommandType.StoredProcedure);
         }
 
         // DELETE: api/Members/5
