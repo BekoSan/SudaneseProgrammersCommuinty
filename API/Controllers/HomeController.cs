@@ -42,6 +42,17 @@ namespace API.Controllers
             return View("MemberForm");
         }
 
+        [HttpPost]
+        public ActionResult Delete(bool accept, int Id)
+        {
+            var memControler = new MembersController();
+            if (accept)
+            {
+                memControler.Delete(Id);
+            }
+            return RedirectToAction("Index", memControler.Get().ToList());
+        }
+
         [Route("members/save")]
         [HttpPost]
         public ActionResult Save(Member member)
