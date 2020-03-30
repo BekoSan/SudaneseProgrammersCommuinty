@@ -61,11 +61,13 @@ namespace SudaneseProgComLibrary.DataAccess
             }
         }
 
-        public void Delete<T>(T model, string commandText, CommandType commandType = CommandType.StoredProcedure)
+        public void Delete<T>(int Id, string commandText, CommandType commandType = CommandType.StoredProcedure)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.GetConnectionString(db)))
             {
-                connection.Execute(commandText, DapperHelper.GenerateParameters(model, true), commandType: commandType);
+                DynamicParameters p = new DynamicParameters();
+                p.Add("@Id", Id);
+                connection.Execute(commandText, p, commandType: commandType);
 
                 //return model;
             }
