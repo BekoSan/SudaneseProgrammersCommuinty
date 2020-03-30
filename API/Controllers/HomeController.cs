@@ -33,8 +33,13 @@ namespace API.Controllers
             }
             else
             {
-                return View(Member);
+                return View("MemberForm", Member);
             }
+        }
+
+        public ActionResult New()
+        {
+            return View("MemberForm");
         }
 
         [Route("members/save")]
