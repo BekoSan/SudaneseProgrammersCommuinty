@@ -39,6 +39,7 @@ namespace API.Controllers
 
         public ActionResult New()
         {
+            ViewBag.Title = "New Member";
             return View("MemberForm");
         }
 
