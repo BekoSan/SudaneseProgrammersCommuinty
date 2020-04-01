@@ -28,7 +28,17 @@ namespace API.Controllers
         [HttpGet]
         public Member LoadMemberProfile(int Id)
         {
-            return GlobalConfig.Connection.GetById<Member>("spMembers_GetById", Id, CommandType.StoredProcedure);
+            Member output = new Member();
+
+            if (GlobalConfig.NoSqlConnection != null)
+            {
+                output = GlobalConfig.NoSqlConnection.LoadRecordById<Member>("Members", Id);
+            }
+            if (GlobalConfig.Connection != null)
+            {
+                output = GlobalConfig.Connection.GetById<Member>("spMembers_GetById", Id, CommandType.StoredProcedure);
+            }
+            return output;
         }
 
         // POST: api/Members
