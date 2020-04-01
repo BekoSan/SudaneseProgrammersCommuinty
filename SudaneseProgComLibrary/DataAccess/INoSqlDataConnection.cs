@@ -1,0 +1,11 @@
+﻿using System.Collections.Generic;
+
+namespace SudaneseProgComLibrary.DataAccess
+{
+    public interface INoSqlDataConnection
+    {
+        void InsertRecord<T>(string table, T record);
+
+        IEnumerable<T> LoadRecords<T>(string table);
+    }
+}

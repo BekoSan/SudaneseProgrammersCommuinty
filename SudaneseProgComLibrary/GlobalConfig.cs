@@ -1,7 +1,4 @@
 ﻿using SudaneseProgComLibrary.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Configuration;
 
 namespace SudaneseProgComLibrary
@@ -9,6 +6,7 @@ namespace SudaneseProgComLibrary
     public static class GlobalConfig
     {
         public static IDataConnection Connection { get; private set; }
+        public static INoSqlDataConnection NoSqlConnection { get; private set; }
 
         /// <summary>
         /// Initialize the connection for your project.
@@ -22,6 +20,12 @@ namespace SudaneseProgComLibrary
                     SqlConnector sqlConnector = new SqlConnector();
                     Connection = sqlConnector;
                     break;
+
+                case DataBaseType.MongoDB:
+                    MongoDBConnector mongoDBConnector = new MongoDBConnector("SudaneseProgComDB");
+                    NoSqlConnection = mongoDBConnector;
+                    break;
+
                 default:
                     break;
             }
@@ -36,6 +40,5 @@ namespace SudaneseProgComLibrary
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
-
     }
 }

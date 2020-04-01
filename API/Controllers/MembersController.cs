@@ -11,7 +11,17 @@ namespace API.Controllers
         // GET api/members
         public IEnumerable<Member> Get()
         {
-            return GlobalConfig.Connection.Get<Member>("spMembers_GetAll", CommandType.StoredProcedure);
+            IEnumerable<Member> output = new List<Member>();
+
+            if (GlobalConfig.NoSqlConnection != null)
+            {
+                output = GlobalConfig.NoSqlConnection.LoadRecords<Member>("Members");
+            }
+            if (GlobalConfig.Connection != null)
+            {
+                output = GlobalConfig.Connection.Get<Member>("spMembers_GetAll", CommandType.StoredProcedure);
+            }
+            return output;
         }
 
         // GET api/members/{id}
@@ -25,7 +35,14 @@ namespace API.Controllers
 
         public void Post(Member member)
         {
-            GlobalConfig.Connection.Create(member, "spMembers_Insert", CommandType.StoredProcedure);
+            if (GlobalConfig.NoSqlConnection != null)
+            {
+                GlobalConfig.NoSqlConnection.InsertRecord("Members", member);
+            }
+            if (GlobalConfig.Connection != null)
+            {
+                GlobalConfig.Connection.Create(member, "spMembers_Insert", CommandType.StoredProcedure);
+            }
         }
 
         // PUT: api/Members/5
