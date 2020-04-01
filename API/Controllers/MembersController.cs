@@ -69,9 +69,18 @@ namespace API.Controllers
         }
 
         // DELETE: api/Members/5
+        [Route("api/members/delete/{Id}")]
+        [HttpDelete]
         public void Delete(int id)
         {
-            GlobalConfig.Connection.Delete<Member>(id, "spMembers_Delete", CommandType.StoredProcedure);
+            if (GlobalConfig.NoSqlConnection != null)
+            {
+                GlobalConfig.NoSqlConnection.DeleteRecord<Member>("Members", id);
+            }
+            if (GlobalConfig.Connection != null)
+            {
+                GlobalConfig.Connection.Delete<Member>(id, "spMembers_Delete", CommandType.StoredProcedure);
+            }
         }
     }
 }
