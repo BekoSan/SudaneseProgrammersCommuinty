@@ -45,5 +45,11 @@ namespace SudaneseProgComLibrary.DataAccess
                 record,
                 new UpdateOptions { IsUpsert = true });
         }
+
+        public void DeleteRecord<T>(string table, int Id)
+        {
+            var filter = Builders<T>.Filter.Eq("Id", Id);
+            LoadCollection<T>(table).DeleteOne(filter);
+        }
     }
 }

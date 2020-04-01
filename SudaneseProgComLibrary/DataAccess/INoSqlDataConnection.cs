@@ -11,5 +11,7 @@ namespace SudaneseProgComLibrary.DataAccess
         T LoadRecordById<T>(string table, int Id);
 
         void UpdateRecord<T>(string table, int Id, T record);
+
+        void DeleteRecord<T>(string table, int Id);
     }
 }
