@@ -43,7 +43,6 @@ namespace API.Controllers
             return View("MemberForm");
         }
 
-        [HttpPost]
         public ActionResult Delete(bool accept, int Id)
         {
             var memControler = new MembersController();
