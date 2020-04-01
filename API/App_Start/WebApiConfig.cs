@@ -11,7 +11,7 @@ namespace API
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-            GlobalConfig.InitializeConnection(DataBaseType.Sql);
+            GlobalConfig.InitializeConnection(DataBaseType.MongoDB);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
