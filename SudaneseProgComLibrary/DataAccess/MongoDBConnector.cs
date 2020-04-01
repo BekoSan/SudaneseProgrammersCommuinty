@@ -10,6 +10,12 @@ namespace SudaneseProgComLibrary.DataAccess
 
         private IMongoDatabase db;
 
+        private IMongoCollection<T> LoadCollection<T>(string table)
+        {
+            var collection = db.GetCollection<T>(table);
+            return collection;
+        }
+
         public MongoDBConnector(string dataBase)
         {
             var client = new MongoClient();
@@ -18,14 +24,18 @@ namespace SudaneseProgComLibrary.DataAccess
 
         public void InsertRecord<T>(string table, T record)
         {
-            var collection = db.GetCollection<T>(table);
-            collection.InsertOne(record);
+            LoadCollection<T>(table).InsertOne(record);
+        }
+
+        public T LoadRecordById<T>(string table, int Id)
+        {
+            var filter = Builders<T>.Filter.Eq("Id", Id);
+            return LoadCollection<T>(table).Find(filter).First();
         }
 
         public IEnumerable<T> LoadRecords<T>(string table)
         {
-            var collection = db.GetCollection<T>(table);
-            return collection.Find(new BsonDocument()).ToEnumerable();
+            return LoadCollection<T>(table).Find(new BsonDocument()).ToEnumerable();
         }
     }
 }

@@ -7,5 +7,7 @@ namespace SudaneseProgComLibrary.DataAccess
         void InsertRecord<T>(string table, T record);
 
         IEnumerable<T> LoadRecords<T>(string table);
+
+        T LoadRecordById<T>(string table, int Id);
     }
 }
