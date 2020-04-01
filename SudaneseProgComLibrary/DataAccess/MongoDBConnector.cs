@@ -37,5 +37,13 @@ namespace SudaneseProgComLibrary.DataAccess
         {
             return LoadCollection<T>(table).Find(new BsonDocument()).ToEnumerable();
         }
+
+        public void UpdateRecord<T>(string table, int Id, T record)
+        {
+            LoadCollection<T>(table).ReplaceOne(
+                new BsonDocument("_id", Id),
+                record,
+                new UpdateOptions { IsUpsert = true });
+        }
     }
 }
