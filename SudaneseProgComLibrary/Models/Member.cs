@@ -1,10 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SudaneseProgComLibrary.Models
 {
     public class Member
     {
         public int Id { get; set; }
+
+        [BsonId]
+        public Guid _id { get; set; }
 
         [Required]
         [Display(Name = "Full Name")]
