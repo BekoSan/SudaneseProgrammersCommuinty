@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SudaneseProgComLibrary.Models.Member>
+<div class="jumbotron">
+    <h1>Sudanese Programmers Community</h1>
+    <p class="lead">Sudanese Programmers Community is a community for sudanese programmers to bulid sudanese software infrastructure.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<h2>Members List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Job)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.FullName, "profile", new { id = item.Id })
+            </td>
+            <td>
+                @Html.Label(item.Job)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "profile", new { id = item.Id }) |
+                @Html.ActionLink(
+    "Delete",
+    "Delete",
+    "Home",
+    new { accept = true, Id = item.Id },
+    new { onclick = "return confirm('Do you really want to delete this member?')" })
+            </td>
+        </tr>
+    }
+</table>

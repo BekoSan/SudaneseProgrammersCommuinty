@@ -1,0 +1,44 @@
+﻿@*@*<div class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <div class="navbar-header">
+            @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>*@
+@*@Html.ActionLink("Sudanese Programmers Community", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+@*<div class="collapse navbar-collapse" id="navbarColor01">*@
+@*<ul class="nav navbar-nav">
+        <li></li>
+        <li></li>
+    </ul>*@
+@*<ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</a>
+            </li>
+        </ul>
+    </div>
+            </div>
+        </div>
+    </div>*@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary  position-fixed top w-100">
+    <a class="navbar-brand"> @Html.ActionLink("Sudanese Programmers Community", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse " id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-itme active">
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })  <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })
+            </li>
+        </ul>
+    </div>
+</nav>
