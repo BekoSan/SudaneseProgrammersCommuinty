@@ -42,7 +42,8 @@ namespace API.Controllers
         }
 
         // POST: api/Members
-
+        [Route("api/members/New")]
+        [HttpPost]
         public void Post(Member member)
         {
             if (GlobalConfig.NoSqlConnection != null)
@@ -56,6 +57,8 @@ namespace API.Controllers
         }
 
         // PUT: api/Members/5
+        [Route("api/members/Update/{id}")]
+        [HttpPut]
         public void Put(int id, Member member)
         {
             if (GlobalConfig.NoSqlConnection != null)
